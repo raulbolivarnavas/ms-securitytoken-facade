@@ -210,3 +210,4 @@ support-logging-spring-boot3/build/
 support-logging-spring-boot4/build/
 
 .idea
+.scripts/
