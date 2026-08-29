@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(':application')
+    implementation project(':domain')
+    implementation libs.boot.starter.webflux
+    implementation libs.support.logging
+    implementation libs.projectlombok
+    annotationProcessor libs.projectlombok
+}

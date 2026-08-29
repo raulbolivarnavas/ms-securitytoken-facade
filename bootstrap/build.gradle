@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+dependencies {
+    implementation project(':application')
+    implementation project(':domain')
+    implementation project(':adapter-in-rest')
+    implementation project(':adapter-out-client')
+    implementation project(':helpers')
+
+    // ── Support for Logging
+    implementation libs.support.logging
+
+    // ── Spring Boot WebFlux
+    implementation libs.boot.starter.webflux
+    implementation libs.boot.starter.security
+
+    // ── Actuator (Liveness/Readiness por defecto en Boot 4)
+    implementation libs.boot.actuator
+
+    // ── Validación Jakarta EE 11
+    implementation libs.boot.validation
+
+    // ── AOP — renombrado en Boot 4 (era spring-boot-starter-aop)
+    implementation libs.boot.starter.aspectj
+
+    // ── Springdoc 3.x — única versión compatible con Spring Boot 4
+    //    springdoc 2.x → Boot 3.x | springdoc 3.x → Boot 4.x
+    implementation libs.boot.springdoc.webflux
+
+    runtimeOnly libs.resilience4j.core
+
+    // ── Architecture tests
+    testImplementation libs.archunit
+}
+
+bootJar {
+    mainClass = 'com.raulbolivar.securitytoken.SecurityTokenFacadeApplication'
+}

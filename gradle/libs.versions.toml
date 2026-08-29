@@ -1,0 +1,225 @@
+[versions]
+
+spring-bom         = "1.0.0-SNAPSHOT"
+spring-boot        = "4.1.0"
+core               = "2.22.0"
+springdoc          = "3.0.3"
+lombok             = "1.18.42"
+awsSdk             = "2.39.5"
+awsSdkV1           = "1.12.800"
+junit              = "5.10.2"
+mockito            = "5.11.0"
+mockito-inline     = "5.2.0"
+assertj            = "3.24.2"
+postgres           = "42.7.7"
+oracle-ojdbc       = "19.3.0.0"
+oracle-jdbc        = "21.7.0.0"
+jakarta-xml-bind   = "4.0.2"
+jaxb-runtime       = "4.0.5"
+jaxb-api           = "2.3.1"
+mapstruct          = "1.6.3"
+logstash-logback   = "7.4"
+commons-fileupload = "1.6.0"
+google-gson        = "2.11.0"
+logback            = "1.5.25"
+caffeine           = "3.1.8"
+hikari             = "5.1.0"
+mockwebserver      = "4.12.0"
+blockhound         = "1.0.15.RELEASE"
+slf4j              = "2.0.9"
+archunit           = "1.4.1"
+wiremock           = "3.5.4"
+checker-qual       = "3.55.1"
+resilience4j       = "2.2.0"
+micrometer         = "1.15.0"
+lombok-mapstruct-binding = "0.2.0"
+support-logging    = "1.1.0"
+
+[libraries]
+
+# [Raul Bolivar Libs]
+support-logging = { module = "io.github.raulbolivarnavas:support-logging-spring-boot4", version.ref = "support-logging" }
+
+# [Main]
+spring-context         = { module = "org.springframework:spring-context"                                               }
+spring-context-support = { module = "org.springframework:spring-context-support"                                       }
+boot-starter           = { module = "org.springframework.boot:spring-boot-starter",        version.ref = "spring-boot" }
+boot-validation        = { module = "org.springframework.boot:spring-boot-starter-validation"                          }
+blockhound-junit       = { module = "io.projectreactor.tools:blockhound-junit-platform",    version.ref = "blockhound" }
+slf4j-api              = { module = "org.slf4j:slf4j-api",                                       version.ref = "slf4j" }
+boot-starter-log4j2    = { module = "org.springframework.boot:spring-boot-starter-log4j2", version.ref = "spring-boot" }
+boot-starter-aspectj   = { module = "org.springframework.boot:spring-boot-starter-aspectj"                             }
+boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot" }
+
+# [Spring WebFlux]
+boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux"                               }
+
+# [Spring Security]
+boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security"                             }
+
+# [Observability]
+boot-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator"                                     }
+
+# [Caffeine Cache]
+caffeine = { module = "com.github.ben-manes.caffeine:caffeine",                               version.ref = "caffeine" }
+
+# [Gson]
+google-gson = { module = "com.google.code.gson:gson",                                      version.ref = "google-gson" }
+
+# [Jackson]
+jackson-databind    = { module = "tools.jackson.core:jackson-databind"                                                 }
+jackson-core        = { module = "tools.jackson.core:jackson-core"                                                     }
+jackson-annotations = { module = "tools.jackson.core:jackson-annotations"                                              }
+jackson-datatype    = { module = "tools.jackson.datatype:jackson-datatype-jsr310"                                      }
+
+# [Springdoc OpenAPI]
+boot-springdoc-webflux = { module = "org.springdoc:springdoc-openapi-starter-webflux-ui",    version.ref = "springdoc" }
+projectlombok          = { group = "org.projectlombok", name = "lombok",                        version.ref = "lombok" }
+
+checker-qual = { module = "org.checkerframework:checker-qual",                            version.ref = "checker-qual" }
+
+# [JAXB Jakarta runtime] (Java 21)
+jakarta-xml-bind = { module = "jakarta.xml.bind:jakarta.xml.bind-api",                version.ref = "jakarta-xml-bind" }
+jaxb-runtime     = { module =  "org.glassfish.jaxb:jaxb-runtime",                         version.ref = "jaxb-runtime" }
+jaxb-api         = { module =  "javax.xml.bind:jaxb-api",                                     version.ref = "jaxb-api" }
+spring-ws-core   = { module =  "org.springframework.ws:spring-ws-core"                                                 }
+spring-oxm       = { module =  "org.springframework:spring-oxm"                                                        }
+
+# [Aspects]
+boot-aop = { module = "org.springframework.boot:spring-boot-starter-aop"                                               }
+
+# [Spring Data]
+spring-data-jdbc = { module = "org.springframework.boot:spring-boot-starter-data-jdbc"                                 }
+spring-data      = { module = "org.springframework.data:spring-data-commons"                                           }
+
+# [JPA / R2DBC]
+boot-starter-data-jpa   = { module = "org.springframework.boot:spring-boot-starter-data-jpa"                           }
+boot-starter-data-r2dbc = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc"                         }
+r2dbc-h2                = { module = "io.r2dbc:r2dbc-h2"                                                               }
+r2dbc-pool              = { module = "io.r2dbc:r2dbc-pool"                                                             }
+hikari                  = { module = "com.zaxxer:HikariCP",                                     version.ref = "hikari" }
+h2                      = { module = "com.h2database:h2"                                                               }
+
+# [Redis Web]
+boot-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis"                         }
+boot-starter-cache      = { module = "org.springframework.boot:spring-boot-starter-cache"                              }
+
+# [Redis Reactive]
+boot-starter-data-redis-reactive = { module = "org.springframework.boot:spring-boot-starter-data-redis-reactive"       }
+lettuce-core                     = { module = "io.lettuce:lettuce-core"                                                }
+
+# [R2DBC Postgres]
+postgresql-r2dbc = { module = "org.postgresql:r2dbc-postgresql",                              version.ref = "postgres" }
+postgresql       = { module = "org.postgresql:postgresql",                                    version.ref = "postgres" }
+
+# [Oracle JDBC]
+oracle-ojdbc = { module = "com.oracle.ojdbc:orai18n",                                     version.ref = "oracle-ojdbc" }
+oracle-jdbc  = { module = "com.oracle.database.jdbc:ojdbc8",                               version.ref = "oracle-jdbc" }
+
+# [Mapstruct]
+mapstruct           = { module = "org.mapstruct:mapstruct",                                  version.ref = "mapstruct" }
+mapstruct-processor = { module = "org.mapstruct:mapstruct-processor",                        version.ref = "mapstruct" }
+lombok-mapstruct-binding = { module = "org.projectlombok:lombok-mapstruct-binding", version.ref = "lombok-mapstruct-binding" }
+
+# [Resilience | Circuit Breaker | Retry | Timelimiter]
+resilience4j-core           = { module = "io.github.resilience4j:resilience4j-core",           version.ref = "resilience4j" }
+resilience4j-reactor        = { module = "io.github.resilience4j:resilience4j-reactor",        version.ref = "resilience4j" }
+resilience4j-circuitbreaker = { module = "io.github.resilience4j:resilience4j-circuitbreaker", version.ref = "resilience4j" }
+resilience4j-retry          = { module = "io.github.resilience4j:resilience4j-retry",          version.ref = "resilience4j" }
+resilience4j-timelimiter    = { module = "io.github.resilience4j:resilience4j-timelimiter",    version.ref = "resilience4j" }
+
+# [Metrics]
+micrometer-core = { module = "io.micrometer:micrometer-core",                               version.ref = "micrometer" }
+resilience4j-micrometer = { module = "io.github.resilience4j:resilience4j-micrometer",    version.ref = "resilience4j" }
+
+# [Kafka]
+spring-kafka  = { module = "org.springframework.kafka:spring-kafka"                                                    }
+kafka-clients = { module = "org.apache.kafka:kafka-clients"                                                            }
+
+# [LogBack]
+logstash-logback-encoder = { group = "net.logstash.logback", name = "logstash-logback-encoder", version.ref = "logstash-logback" }
+logback-core             = { group = "ch.qos.logback", name = "logback-core",                  version.ref = "logback" }
+logback-classic          = { group = "ch.qos.logback", name = "logback-classic",               version.ref = "logback" }
+
+# [Commons FileUpload]
+commons-fileupload = { module = "commons-fileupload:commons-fileupload",            version.ref = "commons-fileupload" }
+
+# [AWS SDK]
+awssdk-cognito           = { module = "software.amazon.awssdk:cognitoidentityprovider",         version.ref = "awsSdk" }
+awssdk-core              = { module = "software.amazon.awssdk:core",                            version.ref = "awsSdk" }
+awssdk-regions           = { module = "software.amazon.awssdk:regions",                         version.ref = "awsSdk" }
+awssdk-sts               = { module = "software.amazon.awssdk:sts",                             version.ref = "awsSdk" }
+awssdk-ssm               = { module = "software.amazon.awssdk:ssm",                             version.ref = "awsSdk" }
+awssdk-secrets-manager   = { module = "software.amazon.awssdk:secretsmanager",                  version.ref = "awsSdk" }
+awssdk-auth              = { module = "software.amazon.awssdk:auth",                            version.ref = "awsSdk" }
+awssdk-java-dynamodb     = { module = "com.amazonaws:aws-java-sdk-dynamodb",                  version.ref = "awsSdkV1" }
+awssdk-dynamodb          = { module = "software.amazon.awssdk:dynamodb",                        version.ref = "awsSdk" }
+awssdk-dynamodb-enhanced = { module = "software.amazon.awssdk:dynamodb-enhanced",               version.ref = "awsSdk" }
+awssdk-lambda            = { module = "software.amazon.awssdk:lambda",                          version.ref = "awsSdk" }
+awssdk-sso               = { module = "software.amazon.awssdk:sso",                             version.ref = "awsSdk" }
+awssdk-ssooidc           = { module = "software.amazon.awssdk:ssooidc",                         version.ref = "awsSdk" }
+awssdk-netty             = { module = "software.amazon.awssdk:netty-nio-client",                version.ref = "awsSdk" }
+awssdk-eventbridge       = { module = "software.amazon.awssdk:eventbridge",                     version.ref = "awsSdk" }
+awssdk-s3                = { module = "software.amazon.awssdk:s3",                              version.ref = "awsSdk" }
+awssdk-url-conn-client     = { module = "software.amazon.awssdk:url-connection-client",         version.ref = "awsSdk" }
+awssdk-apigateway          = { module = "software.amazon.awssdk:apigateway",                    version.ref = "awsSdk" }
+awssdk-apigatewayv2        = { module = "software.amazon.awssdk:apigatewayv2",                  version.ref = "awsSdk" }
+awssdk-iam                 = { module = "software.amazon.awssdk:iam",                           version.ref = "awsSdk" }
+awssdk-secretsmanager      = { module = "software.amazon.awssdk:secretsmanager",                version.ref = "awsSdk" }
+
+# [Test]
+boot-test         = { module = "org.springframework.boot:spring-boot-starter-test"                                     }
+platform-launcher = { module = "org.junit.platform:junit-platform-launcher"                                            }
+reactor-core      = { module = "io.projectreactor:reactor-core"                                                        }
+reactor-test      = { module = "io.projectreactor:reactor-test"                                                        }
+reactor-extra     = { module = "io.projectreactor.addons:reactor-extra"                                                }
+reactor-netty     = { module = "io.projectreactor.netty:reactor-netty"                                                 }
+mockwebserver     = { module = "com.squareup.okhttp3:mockwebserver",                     version.ref = "mockwebserver" }
+archunit          = { module = "com.tngtech.archunit:archunit-junit5",                        version.ref = "archunit" }
+wiremock          = { module = "org.wiremock:wiremock",                                       version.ref = "wiremock" }
+
+# [Test Spring Boot]
+boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test"                                     }
+
+# [Test Containers]
+test-containers                = { module = "org.springframework.boot:spring-boot-testcontainers"                      }
+test-containers-junit-jupiter  = { module = "org.testcontainers:junit-jupiter"                                         }
+test-containers-elasticsearch  = { module = "org.testcontainers:elasticsearch"                                         }
+
+# [Test Junit]
+junit-bom                   = { module = "org.junit:junit-bom",                                  version.ref = "junit" }
+junit-jupiter               = { module = "org.junit.jupiter:junit-jupiter",                      version.ref = "junit" }
+junit-jupiter-api           = { module = "org.junit.jupiter:junit-jupiter-api"                                         }
+junit-jupiter-engine        = { module = "org.junit.jupiter:junit-jupiter-engine"                                      }
+junit-platform-suite-api    = { module = "org.junit.platform:junit-platform-suite-api"                                 }
+junit-platform-suite-engine = { module = "org.junit.platform:junit-platform-suite-engine"                              }
+junit-platform-launcher     = { module = "org.junit.platform:junit-platform-launcher"                                  }
+
+# [Test Mockito / AssertJ]
+mockito-core          = { module = "org.mockito:mockito-core",                                 version.ref = "mockito" }
+mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter",                        version.ref = "mockito" }
+mockito-inline        = { module = "org.mockito:mockito-inline",                        version.ref = "mockito-inline" }
+assertj-core          = { module = "org.assertj:assertj-core",                                 version.ref = "assertj" }
+
+boot-devtools = { module = "org.springframework.boot:spring-boot-devtools"                                             }
+
+# [rb-library]
+spring-bom = { module = "com.raulbolivar.platform:rb-platform-bom",                         version.ref = "spring-bom" }
+rb-core = { module = "com.raulbolivar.lib:rb-core" }
+rb-webflux = { module = "com.raulbolivar.lib:rb-webflux" }
+rb-logging = { module = "com.raulbolivar.lib:rb-logging" }
+rb-observability = { module = "com.raulbolivar.lib:rb-observability" }
+rb-security = { module = "com.raulbolivar.lib:rb-security" }
+
+[bundles]
+
+# Bundle completo para evitar que circuitbreaker/reactor se publiquen sin
+# resilience4j-core en el runtimeClasspath del microservicio consumidor.
+resilience4j = [
+    "resilience4j-core",
+    "resilience4j-reactor",
+    "resilience4j-circuitbreaker",
+    "resilience4j-retry",
+    "resilience4j-timelimiter",
+    "resilience4j-micrometer"
+]

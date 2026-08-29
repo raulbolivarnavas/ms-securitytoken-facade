@@ -1,0 +1,100 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.1.0' apply false
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'jacoco'
+}
+
+allprojects {
+    group = 'com.raulbolivar'
+    version = '1.0.0'
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'jacoco'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    dependencies {
+        implementation libs.reactor.core
+        implementation libs.reactor.extra
+
+        implementation     libs.slf4j.api
+        testImplementation libs.reactor.test
+        testRuntimeOnly    libs.platform.launcher
+        testImplementation libs.boot.test
+        testImplementation libs.mockito.inline
+
+        compileOnly             "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor     "org.projectlombok:lombok:${lombokVersion}"
+        testCompileOnly         "org.projectlombok:lombok:${lombokVersion}"
+        testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+        implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+
+        testImplementation(libs.wiremock)
+
+        testImplementation platform('org.junit:junit-bom:5.10.2')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    test {
+        useJUnitPlatform()
+        finalizedBy jacocoTestReport
+    }
+
+    jacoco {
+        toolVersion = '0.8.12'
+    }
+
+    jacocoTestReport {
+        dependsOn test
+        reports {
+            xml.required = true
+            html.required = true
+            csv.required = false
+        }
+    }
+
+    jacocoTestCoverageVerification {
+        dependsOn test
+        violationRules {
+            rule {
+                limit {
+                    counter = 'LINE'
+                    value = 'COVEREDRATIO'
+                    minimum = 0.90
+                }
+            }
+        }
+    }
+
+    check.dependsOn jacocoTestCoverageVerification
+}
+
+tasks.register('jacocoMergedHtmlReport', JacocoReport) {
+    group = 'verification'
+    description = 'Genera un reporte HTML unificado de cobertura JaCoCo para todos los modulos'
+
+    dependsOn(subprojects.collect { it.tasks.named('test') })
+
+    additionalSourceDirs.from(files(subprojects.collect { it.sourceSets.main.allSource.srcDirs }))
+    sourceDirectories.from(files(subprojects.collect { it.sourceSets.main.allSource.srcDirs }))
+    classDirectories.from(files(subprojects.collect { it.sourceSets.main.output }))
+    executionData.from(files(subprojects.collect { it.layout.buildDirectory.file('jacoco/test.exec') }))
+
+    reports {
+        html.required = true
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('reports/jacoco/merged-html')
+    }
+}

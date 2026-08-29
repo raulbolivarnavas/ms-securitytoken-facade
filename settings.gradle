@@ -1,0 +1,8 @@
+rootProject.name = 'ms-securitytoken-facade'
+
+include 'domain'
+include 'application'
+include 'adapter-in-rest'
+include 'adapter-out-client'
+include 'helpers'
+include 'bootstrap'
